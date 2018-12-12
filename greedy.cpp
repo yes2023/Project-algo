@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<algorithm>
 using namespace std;
-int amount_of_album = 3,album[] = {12,20,32};
+int amount_of_album = 4,album[] = {12,20,32,10};
 int main()
 {
     int n,ans=0,use;
