@@ -6,7 +6,7 @@ int main()
 {
     int n,ans=0,use;
     scanf("%d",&n);
-    sort(album,album+amount_of_album);
+    sort(album,album+amount_of_album); //sort from less to more
     for(int i=amount_of_album-1;i>=0;i--)
     {
         use=n/album[i];
