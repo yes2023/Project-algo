@@ -41,9 +41,9 @@ int main()
     {
         for(int i=1; i<=limit_add && found==0; i++)
         {
-            brute(0,n+i,0);
-            min1=minimum;
-            brute(0,n-i,0);
+            brute(0,n+i,0); //
+            min1=minimum; //            Magic happen here
+            brute(0,n-i,0); //
             if(min1==minimum && found) //found when go backward
             {
                 printf("Add song sai : %d\n",i);
