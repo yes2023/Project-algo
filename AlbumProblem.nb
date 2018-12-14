@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     58159,       1500]
-NotebookOptionsPosition[     55370,       1403]
-NotebookOutlinePosition[     55825,       1420]
-CellTagsIndexPosition[     55782,       1417]
+NotebookDataLength[     59019,       1508]
+NotebookOptionsPosition[     56305,       1414]
+NotebookOutlinePosition[     56760,       1431]
+CellTagsIndexPosition[     56717,       1428]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1229,28 +1229,29 @@ Cell[BoxData[{
    " ", 
    RowBox[{"Module", "[", 
     RowBox[{
-     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", "\t", 
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
       RowBox[{"If", "[", 
        RowBox[{
         RowBox[{
          RowBox[{"n", "\[Equal]", "pic"}], " ", "&&", " ", 
          RowBox[{"amount", " ", "<", " ", "dpsMinimum"}]}], ",", 
-        "\[IndentingNewLine]", "\t", 
+        "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"dpsMinimum", " ", "=", " ", "amount"}], ";", 
-         "\[IndentingNewLine]", "\t", 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{"Copy", " ", "array"}], " ", "*)"}], "\[IndentingNewLine]", 
          RowBox[{"For", "[", 
           RowBox[{
-           RowBox[{"i", "=", "1"}], ",", 
-           RowBox[{"i", "\[LessEqual]", " ", "amount"}], ",", 
-           RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", "\t\t", 
+           RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+           RowBox[{"i", " ", "\[LessEqual]", " ", "amount"}], ",", " ", 
+           RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
              RowBox[{"dpsAns", "[", "i", "]"}], " ", "=", " ", 
              RowBox[{"dpsStage", "[", "i", "]"}]}], ";"}]}], 
-          "\[IndentingNewLine]", "\t", "]"}], ";", "\[IndentingNewLine]", 
-         "\t", 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
          RowBox[{"dpsFound", " ", "=", " ", "1"}], ";"}]}], 
        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
@@ -1259,10 +1260,9 @@ Cell[BoxData[{
         RowBox[{
          RowBox[{"For", "[", 
           RowBox[{
-           RowBox[{
-            RowBox[{"i", "=", "0"}], ";", " ", 
-            RowBox[{"i", " ", "<", " ", 
-             RowBox[{"Length", "[", "albums", "]"}]}]}], ",", " ", 
+           RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
+           RowBox[{"i", " ", "\[LessEqual]", "  ", 
+            RowBox[{"Length", "[", "albums", "]"}]}], ",", " ", 
            RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
@@ -1270,7 +1270,7 @@ Cell[BoxData[{
              RowBox[{"albums", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
             RowBox[{"dpsBrute", "[", 
              RowBox[{
-              RowBox[{"n", "+", " ", 
+              RowBox[{"n", " ", "+", " ", 
                RowBox[{"albums", "[", "i", "]"}]}], ",", " ", "pic", ",", " ", 
               RowBox[{"amount", " ", "+", " ", "1"}]}], "]"}], ";"}]}], 
           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
@@ -1287,10 +1287,10 @@ Cell[BoxData[{
       RowBox[{"n", " ", "=", " ", "photos"}], ";", "\[IndentingNewLine]", 
       RowBox[{"albums", " ", "=", " ", "albumList"}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"minimum", " ", "=", " ", "99999999"}], ";", 
+      RowBox[{"dpsMinimum", " ", "=", " ", "99999999"}], ";", 
       "\[IndentingNewLine]", 
       RowBox[{"min1", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"found", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"dpsFound", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
       RowBox[{"albums", " ", "=", " ", 
        RowBox[{"Sort", "[", 
         RowBox[{"albums", ",", " ", "Greater"}], "]"}]}], ";", 
@@ -1301,7 +1301,7 @@ Cell[BoxData[{
       "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"found", " ", "\[Equal]", " ", "0"}], ",", " ", 
+        RowBox[{"dpsFound", " ", "\[Equal]", " ", "0"}], ",", " ", 
         "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"For", "[", 
@@ -1313,21 +1313,21 @@ Cell[BoxData[{
             RowBox[{"found", " ", "\[Equal]", " ", "0"}]}], ",", " ", 
            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"Brute", "[", 
+            RowBox[{"dpsBrute", "[", 
              RowBox[{"1", ",", " ", 
               RowBox[{"n", " ", "+", " ", "i"}], ",", " ", "0"}], "]"}], ";", 
             "\[IndentingNewLine]", 
-            RowBox[{"min1", " ", "=", " ", "minimum"}], ";", 
+            RowBox[{"min1", " ", "=", " ", "dpsMinimum"}], ";", 
             "\[IndentingNewLine]", 
-            RowBox[{"Brute", "[", 
+            RowBox[{"dpsBrute", "[", 
              RowBox[{"1", ",", " ", 
-              RowBox[{"m", "-", "1"}], ",", " ", "0"}], "]"}], ";", 
+              RowBox[{"n", "-", "1"}], ",", " ", "0"}], "]"}], ";", 
             "\[IndentingNewLine]", 
             RowBox[{"If", "[", 
              RowBox[{
               RowBox[{
-               RowBox[{"min1", "\[Equal]", "minimum"}], " ", "&&", " ", 
-               "found"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"min1", "\[Equal]", " ", "dpsMinimum"}], " ", "&&", 
+               " ", "dpsFound"}], ",", "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"Print", "[", 
                 RowBox[{"StringForm", "[", 
@@ -1337,18 +1337,43 @@ Cell[BoxData[{
               RowBox[{"(*", " ", "Else", " ", "*)"}], "\[IndentingNewLine]", 
               RowBox[{
                RowBox[{"If", "[", 
-                RowBox[{"found", ",", "\[IndentingNewLine]", 
+                RowBox[{"dpsFound", ",", "\[IndentingNewLine]", 
                  RowBox[{
                   RowBox[{"Print", "[", 
                    RowBox[{"StringForm", "[", 
                     RowBox[{"\"\<Add blank slide: ``\>\"", ",", " ", "i"}], 
                     "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
                ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}], ";"}]}], 
-       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"i", " ", "=", " ", 
+            RowBox[{"dpsLimitAdd", " ", "+", " ", "1"}]}], ",", " ", 
+           RowBox[{"dpsFound", "\[Equal]", "0"}], ",", " ", 
+           RowBox[{"i", "++"}], ",", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Go", " ", "back", " ", "and", " ", "go", " ", "forward", " ", 
+             "not", " ", "found", " ", "go", " ", "ahead"}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"dpsBrute", "[", 
+             RowBox[{"1", ",", " ", 
+              RowBox[{"n", "+", "i"}], ",", " ", "0"}], "]"}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{"dpsFound", ",", " ", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Print", "[", 
+                RowBox[{"StringForm", "[", 
+                 RowBox[{"\"\<Use ``\>\"", ",", " ", 
+                  RowBox[{"n", " ", "+", " ", "i"}]}], "]"}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+          "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
+      "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
        RowBox[{
-        RowBox[{"found", " ", "\[Equal]", " ", "1"}], ",", " ", 
+        RowBox[{"dpsFound", " ", "\[Equal]", " ", "1"}], ",", " ", 
         "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"For", "[", 
@@ -1374,30 +1399,16 @@ Cell[BoxData[{
    3.753783858345052*^9, 3.7537838776000476`*^9}, {3.753784612393654*^9, 
    3.7537847168504915`*^9}, {3.7537847979854517`*^9, 3.753784865358574*^9}, {
    3.753786071775528*^9, 3.753786467364685*^9}, {3.753786502918729*^9, 
-   3.753786517727731*^9}},
- EmphasizeSyntaxErrors->True],
-
-Cell[CellGroupData[{
+   3.753786517727731*^9}, {3.75378970894522*^9, 3.753789733358241*^9}, 
+   3.753790014404654*^9, {3.7537902217319317`*^9, 3.753790276577781*^9}, {
+   3.753791167931274*^9, 3.7537912517432833`*^9}, {3.7537912912562904`*^9, 
+   3.7537913981062946`*^9}, {3.75379147744162*^9, 3.7537916234551797`*^9}}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"dps", "[", 
    RowBox[{"15", ",", " ", "albums"}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Sort", "::", "normal"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Nonatomic expression expected at position \
-\[NoBreak]\\!\\(1\\)\[NoBreak] in \[NoBreak]\\!\\(Sort[\\(\\(albums, \
-Greater\\)\\)]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
-ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
-ButtonData:>\\\"paclet:ref/message/General/normal\\\", ButtonNote -> \
-\\\"Sort::normal\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.753786486458689*^9}]
-}, Open  ]]
+ CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -1495,11 +1506,8 @@ Cell[46117, 1188, 571, 9, 21, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[46749, 1204, 257, 3, 63, "Section"],
-Cell[47009, 1209, 7593, 168, 998, "Input"],
-Cell[CellGroupData[{
-Cell[54627, 1381, 177, 4, 37, "Input"],
-Cell[54807, 1387, 523, 11, 21, "Message"]
-}, Open  ]]
+Cell[47009, 1209, 9088, 195, 1118, "Input"],
+Cell[56100, 1406, 177, 4, 37, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
