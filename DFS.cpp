@@ -4,13 +4,13 @@ int type_of_album = 4,album[] = {12,20,32,10},limit_add = 4;
 int stage[10000],minimum,found,ans[10000];
 void copy_arry(int n)
 {
-    for(int i=0;i<n;i++)
+    for(int i=0; i<n; i++)
         ans[i]=stage[i];
 }
 
 void brute(int n,int pic,int amount)
 {
-    if(n==pic && amount<minimum) //if there are
+    if(n==pic && amount<minimum) //if there found correct amount
     {
         minimum=amount;
         copy_arry(amount);
@@ -35,7 +35,7 @@ int main()
     minimum = 99999999;
     found = 0;
     scanf("%d",&n);
-    std::sort(album,album+type_of_album,compare);
+    std::sort(album,album+type_of_album,compare); //sort from most to less
     brute(0,n,0);
     if(found==0)
     {
@@ -44,21 +44,21 @@ int main()
             brute(0,n+i,0);
             min1=minimum;
             brute(0,n-i,0);
-            if(min1==minimum && found)
+            if(min1==minimum && found) //found when go backward
             {
                 printf("Add song sai : %d\n",i);
             }
-            else if(found)
+            else if(found) //go forward better
             {
                 printf("Use %d\n",n+i);
             }
         }
-        for(int i=limit_add+1;found==0 ; i++)
-            {
-                brute(0,n+i,0);
-                if(found)
-                    printf("Use %d\n",n+i);
-            }
+        for(int i=limit_add+1; found==0 ; i++) //if go back and go forward not found go ahead
+        {
+            brute(0,n+i,0);
+            if(found)
+                printf("Use %d\n",n+i);
+        }
     }
     if(found==1)
     {
