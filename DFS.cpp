@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<algorithm>
-int type_of_album = 4,album[] = {12,20,32,10},limit_add = 4;
+int type_of_album = 3,album[] = {24,52,28},limit_add = 4;
 int stage[10000],minimum,found,ans[10000];
 void copy_arry(int n)
 {
@@ -20,7 +20,7 @@ void brute(int n,int pic,int amount)
     {
         for(int i=0; i<type_of_album; i++)
         {
-            stage[amount]=album[i]; //include stage
+            stage[amount]=album[i]; //includ//e stage
             brute(n+album[i],pic,amount+1); //go to next branch
         }
     }
@@ -44,13 +44,13 @@ int main()
             brute(0,n+i,0); //
             min1=minimum; //            Magic happen here
             brute(0,n-i,0); //
-            if(min1==minimum && found) //found when go backward
-            {
-                printf("Add song sai : %d\n",i);
-            }
-            else if(found) //go forward better
+            if(min1==minimum && found) //go forward better
             {
                 printf("Use %d\n",n+i);
+            }
+            else if(found) //go backward better
+            {
+                printf("Add song  sai : %d\n",i);
             }
         }
         for(int i=limit_add+1; found==0 ; i++) //if go back and go forward not found go ahead
