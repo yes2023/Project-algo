@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     59019,       1508]
-NotebookOptionsPosition[     56305,       1414]
-NotebookOutlinePosition[     56760,       1431]
-CellTagsIndexPosition[     56717,       1428]
+NotebookDataLength[     60302,       1546]
+NotebookOptionsPosition[     57400,       1445]
+NotebookOutlinePosition[     57854,       1462]
+CellTagsIndexPosition[     57811,       1459]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1215,11 +1215,11 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"dpsStage", " ", "=", " ", 
    RowBox[{"ConstantArray", "[", 
-    RowBox[{"0", ",", " ", "10000"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"0", ",", " ", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"dpsAns", " ", "=", " ", 
    RowBox[{"ConstantArray", "[", 
-    RowBox[{"0", ",", " ", "10000"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"0", ",", " ", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"dpsLimitAdd", " ", "=", " ", "4"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -1249,9 +1249,13 @@ Cell[BoxData[{
            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
-             RowBox[{"dpsAns", "[", "i", "]"}], " ", "=", " ", 
-             RowBox[{"dpsStage", "[", "i", "]"}]}], ";"}]}], 
-          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+             RowBox[{
+             "dpsAns", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+              " ", "=", " ", 
+             RowBox[{
+             "dpsStage", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}]}], ";"}]}], "\[IndentingNewLine]", 
+          "]"}], ";", "\[IndentingNewLine]", 
          RowBox[{"dpsFound", " ", "=", " ", "1"}], ";"}]}], 
        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
       RowBox[{"If", "[", 
@@ -1266,12 +1270,15 @@ Cell[BoxData[{
            RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
            RowBox[{
             RowBox[{
-             RowBox[{"dpsStage", "[", "amount", "]"}], " ", "=", " ", 
-             RowBox[{"albums", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"dpsStage", "[", 
+              RowBox[{"[", "amount", "]"}], "]"}], " ", "=", " ", 
+             RowBox[{"albums", "[", 
+              RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
             RowBox[{"dpsBrute", "[", 
              RowBox[{
               RowBox[{"n", " ", "+", " ", 
-               RowBox[{"albums", "[", "i", "]"}]}], ",", " ", "pic", ",", " ", 
+               RowBox[{"albums", "[", 
+                RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "pic", ",", " ", 
               RowBox[{"amount", " ", "+", " ", "1"}]}], "]"}], ";"}]}], 
           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
        ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
@@ -1287,8 +1294,7 @@ Cell[BoxData[{
       RowBox[{"n", " ", "=", " ", "photos"}], ";", "\[IndentingNewLine]", 
       RowBox[{"albums", " ", "=", " ", "albumList"}], ";", 
       "\[IndentingNewLine]", 
-      RowBox[{"dpsMinimum", " ", "=", " ", "99999999"}], ";", 
-      "\[IndentingNewLine]", 
+      RowBox[{"dpsMinimum", " ", "=", " ", "99"}], ";", "\[IndentingNewLine]", 
       RowBox[{"min1", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
       RowBox[{"dpsFound", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
       RowBox[{"albums", " ", "=", " ", 
@@ -1385,7 +1391,9 @@ Cell[BoxData[{
             RowBox[{"Print", "[", 
              RowBox[{"StringForm", "[", 
               RowBox[{"\"\<``\>\"", ",", " ", 
-               RowBox[{"dpsAns", "[", "i", "]"}]}], "]"}], "]"}], ";"}]}], 
+               RowBox[{
+               "dpsAns", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}], "]"}], "]"}], ";"}]}], 
           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
        ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.7537741615413017`*^9, 3.75377418767828*^9}, {
@@ -1402,18 +1410,41 @@ Cell[BoxData[{
    3.753786517727731*^9}, {3.75378970894522*^9, 3.753789733358241*^9}, 
    3.753790014404654*^9, {3.7537902217319317`*^9, 3.753790276577781*^9}, {
    3.753791167931274*^9, 3.7537912517432833`*^9}, {3.7537912912562904`*^9, 
-   3.7537913981062946`*^9}, {3.75379147744162*^9, 3.7537916234551797`*^9}}],
+   3.7537913981062946`*^9}, {3.75379147744162*^9, 3.7537916234551797`*^9}, {
+   3.7537923347619157`*^9, 3.7537924149108777`*^9}, {3.7537924979466133`*^9, 
+   3.753792514697612*^9}}],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"dps", "[", 
    RowBox[{"15", ",", " ", "albums"}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}}]
+ CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.753791632942176*^9, 3.753792327830878*^9, 
+  3.753792422763876*^9, 3.753792465355578*^9, 3.753792507803625*^9, 
+  3.7537925403695803`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Dynamic Programming", "Section",
+ CellChangeTimes->{{3.7499026240634675`*^9, 3.749902632045968*^9}, {
+  3.7499031814978623`*^9, 3.7499031844671173`*^9}, {3.7537714974526463`*^9, 
+  3.7537715460626445`*^9}, {3.753774147684276*^9, 3.753774153016276*^9}, {
+  3.753792717207177*^9, 3.75379272063118*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", "*)"}]], "Input",
+ CellChangeTimes->{{3.7537927218542123`*^9, 3.7537927305783095`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{866, 781},
-WindowMargins->{{Automatic, -119}, {Automatic, 19}},
+WindowSize->{1536, 781},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 Magnification:>0.9 Inherited,
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
@@ -1506,8 +1537,15 @@ Cell[46117, 1188, 571, 9, 21, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[46749, 1204, 257, 3, 63, "Section"],
-Cell[47009, 1209, 9088, 195, 1118, "Input"],
-Cell[56100, 1406, 177, 4, 37, "Input"]
+Cell[47009, 1209, 9489, 205, 1118, "Input"],
+Cell[CellGroupData[{
+Cell[56523, 1418, 177, 4, 37, "Input"],
+Cell[56703, 1424, 195, 3, 36, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56947, 1433, 306, 4, 63, "Section"],
+Cell[57256, 1439, 116, 2, 37, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
