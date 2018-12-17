@@ -1,8 +1,10 @@
+const sumAlbum = (albums) => albums.reduce((sum, val) => sum + val, 0)
+
 function dfs(albums, photos) {
 	let stack = [[]]
 	while(stack.length > 0) {
 		let current = stack.pop()
-		let amount = current.reduce((sum, val) => sum + val, 0)
+		let amount = sumAlbum(current)
 		if(amount == photos) {
 			return current
 		}
