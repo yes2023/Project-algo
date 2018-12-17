@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     37610,        834]
-NotebookOptionsPosition[     36177,        781]
-NotebookOutlinePosition[     36629,        798]
-CellTagsIndexPosition[     36586,        795]
+NotebookDataLength[     38920,        862]
+NotebookOptionsPosition[     37446,        808]
+NotebookOutlinePosition[     37898,        825]
+CellTagsIndexPosition[     37855,        822]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -207,194 +207,93 @@ Cell["Depth First Search", "Section",
   3.7537715460626445`*^9}, {3.753774147684276*^9, 3.753774153016276*^9}}],
 
 Cell[BoxData[{
- RowBox[{
-  RowBox[{"dpsMinimum", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"dpsFound", " ", "=", " ", "0"}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"dpsStage", " ", "=", " ", 
-   RowBox[{"ConstantArray", "[", 
-    RowBox[{"0", ",", " ", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"dpsAns", " ", "=", " ", 
-   RowBox[{"ConstantArray", "[", 
-    RowBox[{"0", ",", " ", "10"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"dpsLimitAdd", " ", "=", " ", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"SetAttributes", "[", 
+  RowBox[{"pop", ",", "HoldFirst"}], "]"}], "\n", 
  RowBox[{
   RowBox[{
-   RowBox[{"dpsBrute", "[", 
-    RowBox[{"n_", ",", " ", "pic_", ",", " ", "amount_"}], "]"}], " ", ":=", 
-   " ", 
-   RowBox[{"Module", "[", 
+   RowBox[{"pop", "[", "list_", "]"}], ":=", 
+   RowBox[{"With", "[", 
     RowBox[{
-     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"item", "=", 
+       RowBox[{"list", "[", 
+        RowBox[{"[", 
+         RowBox[{"Length", "[", "list", "]"}], "]"}], "]"}]}], "}"}], ",", 
      RowBox[{
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"n", "\[Equal]", "pic"}], " ", "&&", " ", 
-         RowBox[{"amount", " ", "<", " ", "dpsMinimum"}]}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"dpsMinimum", " ", "=", " ", "amount"}], ";", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{"Copy", " ", "array"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"For", "[", 
-          RowBox[{
-           RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
-           RowBox[{"i", " ", "\[LessEqual]", " ", "amount"}], ",", " ", 
-           RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{
-             RowBox[{
-             "dpsAns", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
-              " ", "=", " ", 
-             RowBox[{
-             "dpsStage", "\[LeftDoubleBracket]", "i", 
-              "\[RightDoubleBracket]"}]}], ";"}]}], "\[IndentingNewLine]", 
-          "]"}], ";", "\[IndentingNewLine]", 
-         RowBox[{"dpsFound", " ", "=", " ", "1"}], ";"}]}], 
-       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"n", " ", "<", " ", "pic"}], ",", " ", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"For", "[", 
-          RowBox[{
-           RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
-           RowBox[{"i", " ", "\[LessEqual]", "  ", 
-            RowBox[{"Length", "[", "albums", "]"}]}], ",", " ", 
-           RowBox[{"i", "++"}], ",", " ", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{
-             RowBox[{"dpsStage", "[", 
-              RowBox[{"[", "amount", "]"}], "]"}], " ", "=", " ", 
-             RowBox[{"albums", "[", 
-              RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-            RowBox[{"dpsBrute", "[", 
-             RowBox[{
-              RowBox[{"n", " ", "+", " ", 
-               RowBox[{"albums", "[", 
-                RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "pic", ",", " ", 
-              RowBox[{"amount", " ", "+", " ", "1"}]}], "]"}], ";"}]}], 
-          "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
-       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+      RowBox[{"list", "=", 
+       RowBox[{"Delete", "[", 
+        RowBox[{"list", ",", 
+         RowBox[{"Length", "[", "list", "]"}]}], "]"}]}], ";", "item"}]}], 
+    "]"}]}], "\n"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"dps", "[", 
-    RowBox[{"photos_", ",", " ", "albumList_"}], "]"}], " ", ":=", " ", 
+   RowBox[{"DFS", "[", 
+    RowBox[{"albums_", ",", " ", "photos_"}], "]"}], " ", ":=", " ", 
    RowBox[{"Module", "[", 
     RowBox[{
      RowBox[{"{", 
-      RowBox[{"n", ",", " ", "albums"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"stack", ",", " ", "ans"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"n", " ", "=", " ", "photos"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"albums", " ", "=", " ", "albumList"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"dpsMinimum", " ", "=", " ", "99"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"min1", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"dpsFound", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
-      RowBox[{"albums", " ", "=", " ", 
-       RowBox[{"Sort", "[", 
-        RowBox[{"albums", ",", " ", "Greater"}], "]"}]}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"dpsBrute", "[", 
-       RowBox[{"1", ",", " ", 
-        RowBox[{"n", " ", "+", " ", "i"}], ",", " ", "0"}], "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
+      RowBox[{"stack", " ", "=", " ", 
+       RowBox[{"{", 
+        RowBox[{"{", "}"}], "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ans", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
        RowBox[{
-        RowBox[{"dpsFound", " ", "\[Equal]", " ", "0"}], ",", " ", 
-        "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"For", "[", 
+         RowBox[{"Length", "[", "stack", "]"}], " ", ">", " ", "0"}], ",", 
+        " ", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"current", "  ", "=", " ", 
+          RowBox[{"pop", "[", "stack", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"amount", " ", "=", " ", 
+          RowBox[{"Total", "[", "current", "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
           RowBox[{
-           RowBox[{"i", "=", "1"}], ",", " ", 
            RowBox[{
-            RowBox[{"i", " ", "\[LessEqual]", " ", "dpsLimitAdd"}], " ", "&&",
-             " ", 
-            RowBox[{"found", " ", "\[Equal]", " ", "0"}]}], ",", " ", 
-           RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"dpsBrute", "[", 
-             RowBox[{"1", ",", " ", 
-              RowBox[{"n", " ", "+", " ", "i"}], ",", " ", "0"}], "]"}], ";", 
-            "\[IndentingNewLine]", 
-            RowBox[{"min1", " ", "=", " ", "dpsMinimum"}], ";", 
-            "\[IndentingNewLine]", 
-            RowBox[{"dpsBrute", "[", 
-             RowBox[{"1", ",", " ", 
-              RowBox[{"n", "-", "1"}], ",", " ", "0"}], "]"}], ";", 
-            "\[IndentingNewLine]", 
-            RowBox[{"If", "[", 
+            RowBox[{"amount", " ", "\[Equal]", " ", "photos"}], " ", "&&", 
+            " ", 
+            RowBox[{"(", 
              RowBox[{
               RowBox[{
-               RowBox[{"min1", "\[Equal]", " ", "dpsMinimum"}], " ", "&&", 
-               " ", "dpsFound"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"Length", "[", "ans", "]"}], " ", "\[Equal]", " ", 
+               "0"}], " ", "||", " ", 
               RowBox[{
-               RowBox[{"Print", "[", 
-                RowBox[{"StringForm", "[", 
-                 RowBox[{"\"\<Use ``\>\"", ",", " ", 
-                  RowBox[{"n", "+", " ", "i"}]}], "]"}], "]"}], ";"}], 
-              "\[IndentingNewLine]", ",", " ", 
-              RowBox[{"(*", " ", "Else", " ", "*)"}], "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"If", "[", 
-                RowBox[{"dpsFound", ",", "\[IndentingNewLine]", 
-                 RowBox[{
-                  RowBox[{"Print", "[", 
-                   RowBox[{"StringForm", "[", 
-                    RowBox[{"\"\<Add blank slide: ``\>\"", ",", " ", "i"}], 
-                    "]"}], "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
-               ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
-          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-         RowBox[{"For", "[", 
-          RowBox[{
-           RowBox[{"i", " ", "=", " ", 
-            RowBox[{"dpsLimitAdd", " ", "+", " ", "1"}]}], ",", " ", 
-           RowBox[{"dpsFound", "\[Equal]", "0"}], ",", " ", 
-           RowBox[{"i", "++"}], ",", 
-           RowBox[{"(*", " ", 
-            RowBox[{
-            "Go", " ", "back", " ", "and", " ", "go", " ", "forward", " ", 
-             "not", " ", "found", " ", "go", " ", "ahead"}], " ", "*)"}], 
+               RowBox[{"Length", "[", "current", "]"}], " ", "<", " ", 
+               RowBox[{"Length", "[", "ans", "]"}]}]}], ")"}]}], ",", 
            "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"dpsBrute", "[", 
-             RowBox[{"1", ",", " ", 
-              RowBox[{"n", "+", "i"}], ",", " ", "0"}], "]"}], ";", 
-            "\[IndentingNewLine]", 
-            RowBox[{"If", "[", 
-             RowBox[{"dpsFound", ",", " ", "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"Print", "[", 
-                RowBox[{"StringForm", "[", 
-                 RowBox[{"\"\<Use ``\>\"", ",", " ", 
-                  RowBox[{"n", " ", "+", " ", "i"}]}], "]"}], "]"}], ";"}]}], 
-             "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
-          "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";", 
-      "\[IndentingNewLine]", 
-      RowBox[{"If", "[", 
-       RowBox[{
-        RowBox[{"dpsFound", " ", "\[Equal]", " ", "1"}], ",", " ", 
-        "\[IndentingNewLine]", 
-        RowBox[{
+            RowBox[{"ans", " ", "=", " ", "current"}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
          RowBox[{"For", "[", 
           RowBox[{
            RowBox[{"i", " ", "=", " ", "1"}], ",", " ", 
-           RowBox[{"i", " ", "<", " ", "minimum"}], ",", " ", 
+           RowBox[{"i", " ", "\[LessEqual]", " ", 
+            RowBox[{"Length", "[", "albums", "]"}]}], ",", 
            RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
            RowBox[{
-            RowBox[{"Print", "[", 
-             RowBox[{"StringForm", "[", 
-              RowBox[{"\"\<``\>\"", ",", " ", 
-               RowBox[{
-               "dpsAns", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}]}], "]"}], "]"}], ";"}]}], 
+            RowBox[{"album", " ", "=", " ", 
+             RowBox[{
+             "albums", "\[LeftDoubleBracket]", "i", 
+              "\[RightDoubleBracket]"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"amount", " ", "+", " ", "album"}], " ", 
+               "\[LessEqual]", " ", "photos"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"AppendTo", "[", 
+                RowBox[{"stack", ",", " ", 
+                 RowBox[{"Append", "[", 
+                  RowBox[{"current", ",", " ", "album"}], "]"}]}], "]"}], 
+               ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}],
-       ";"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "ans", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.7537741615413017`*^9, 3.75377418767828*^9}, {
    3.7537742823646755`*^9, 3.7537743522297015`*^9}, {3.7537746005850186`*^9, 
    3.7537746026100235`*^9}, {3.7537746461989837`*^9, 3.753774657875983*^9}, {
@@ -411,20 +310,148 @@ Cell[BoxData[{
    3.753791167931274*^9, 3.7537912517432833`*^9}, {3.7537912912562904`*^9, 
    3.7537913981062946`*^9}, {3.75379147744162*^9, 3.7537916234551797`*^9}, {
    3.7537923347619157`*^9, 3.7537924149108777`*^9}, {3.7537924979466133`*^9, 
-   3.753792514697612*^9}}],
-
-Cell[CellGroupData[{
+   3.753792514697612*^9}, {3.754016708411479*^9, 3.754016709361455*^9}, {
+   3.7540167422815065`*^9, 3.7540167950787354`*^9}, {3.75401722464438*^9, 
+   3.75401724594038*^9}, {3.754017289064396*^9, 3.7540172977733793`*^9}, {
+   3.7540173311633787`*^9, 3.7540173469833946`*^9}, {3.7540173820683804`*^9, 
+   3.754017388985381*^9}, {3.7540174625793796`*^9, 3.7540175002263455`*^9}, {
+   3.7540176670103807`*^9, 3.7540177108923817`*^9}, {3.754019000478031*^9, 
+   3.7540190398640275`*^9}, {3.7540191085210643`*^9, 3.754019115422062*^9}, {
+   3.7540192100420623`*^9, 3.7540192945230618`*^9}, {3.7540196885075674`*^9, 
+   3.7540197018736*^9}, {3.7540197938556023`*^9, 3.7540198025126104`*^9}, {
+   3.754019875413602*^9, 3.7540198809195995`*^9}, {3.754020091533388*^9, 
+   3.7540201867453995`*^9}, {3.754020355308386*^9, 3.7540203583093863`*^9}, {
+   3.7540203993284006`*^9, 3.7540203995003996`*^9}, {3.7540204876433854`*^9, 
+   3.754020569692384*^9}, {3.754020658654374*^9, 3.7540207043163843`*^9}, {
+   3.7540207553974037`*^9, 3.7540208240614004`*^9}, 3.7540208604853835`*^9, {
+   3.7540209560073495`*^9, 3.754020957124384*^9}}],
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{"dps", "[", 
-   RowBox[{"15", ",", " ", "albums"}], "]"}], ";"}]], "Input",
- CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}}],
+  RowBox[{
+   RowBox[{"DFSFindAlbum", "[", 
+    RowBox[{"albums_", ",", " ", "photos_", ",", " ", "limit_"}], "]"}], " ", 
+   ":=", " ", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"ans", ",", " ", "insert", ",", " ", "leftover"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ans", " ", "=", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"insert", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"leftover", " ", "=", " ", 
+       RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ans", " ", "=", " ", 
+       RowBox[{"DFS", "[", 
+        RowBox[{"albums", ",", " ", "photos"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"i", " ", "=", "1"}], ",", " ", 
+        RowBox[{
+         RowBox[{"Length", "[", "ans", "]"}], " ", "\[Equal]", " ", "0"}], 
+        ",", " ", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"i", " ", "\[LessEqual]", " ", "limit"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"insert", " ", "=", " ", 
+            RowBox[{"DFS", "[", 
+             RowBox[{"albums", ",", " ", 
+              RowBox[{"photos", " ", "-", " ", "1"}]}], "]"}]}], ",", " ", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"insert", " ", "=", " ", 
+             RowBox[{"{", "}"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ";",
+          "\[IndentingNewLine]", 
+         RowBox[{"leftover", " ", "=", " ", 
+          RowBox[{"DFS", "[", 
+           RowBox[{"albums", ",", " ", 
+            RowBox[{"photos", " ", "+", " ", "1"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Left over \>\"", ",", " ", "leftover"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Print", "[", 
+          RowBox[{"\"\<Insert \>\"", ",", " ", "insert"}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Length", "[", "leftover", "]"}], " ", "\[LessEqual]", 
+             " ", 
+             RowBox[{"Length", "[", "insert", "]"}]}], " ", "&&", " ", 
+            RowBox[{
+             RowBox[{"Length", "[", "leftover", "]"}], " ", ">", " ", "0"}]}],
+            ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"Print", "[", "1", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"Return", "[", "leftover", "]"}], ";"}], 
+           "\[IndentingNewLine]", ",", " ", 
+           RowBox[{"(*", " ", "Else", " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Length", "[", "leftover", "]"}], " ", ">", "0"}], ",",
+               "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"Print", "[", "2", "]"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"Return", "[", "leftover", "]"}], ";"}], 
+              "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Length", "[", "insert", "]"}], " ", ">", " ", 
+                  "0"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"Print", "[", "3", "]"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"Return", "[", "insert", "]"}], ";"}]}], 
+                "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Return", "[", "ans", "]"}], ";"}]}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.7540209585183992`*^9, 3.754020994801383*^9}, {
+  3.754021070896265*^9, 3.75402110201728*^9}, {3.754021413337705*^9, 
+  3.7540215258687134`*^9}}],
 
-Cell[BoxData["$Aborted"], "Output",
- CellChangeTimes->{3.753791632942176*^9, 3.753792327830878*^9, 
-  3.753792422763876*^9, 3.753792465355578*^9, 3.753792507803625*^9, 
-  3.7537925403695803`*^9}]
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"test", " ", "=", " ", 
+   RowBox[{"DFSFindAlbum", "[", 
+    RowBox[{"albums", ",", " ", "52", ",", " ", "2"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "test", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7537746592649817`*^9, 3.753774666094984*^9}, {
+   3.754016717894511*^9, 3.7540167189294863`*^9}, {3.754017391242344*^9, 
+   3.7540174320303946`*^9}, {3.7540174755843887`*^9, 
+   3.7540174903013873`*^9}, {3.7540193380730276`*^9, 
+   3.7540193426100683`*^9}, {3.7540194506690273`*^9, 
+   3.7540194538730636`*^9}, {3.7540196112530556`*^9, 
+   3.7540196114270616`*^9}, {3.7540208747763844`*^9, 3.7540208767673855`*^9}, 
+   3.7540209700604005`*^9, {3.754021023214262*^9, 3.754021058338261*^9}, 
+   3.7540211062812634`*^9, {3.7540213955846786`*^9, 3.7540213963697157`*^9}, {
+   3.754021466871714*^9, 3.7540214797577133`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"32", ",", "20"}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.754021030880227*^9, 3.7540210625372314`*^9, 3.754021108898232*^9, {
+   3.7540213967367954`*^9, 3.754021528236684*^9}}]
 }, Open  ]]
 }, Open  ]],
 
@@ -820,19 +847,20 @@ Cell[7853, 187, 571, 9, 21, "Print"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[8485, 203, 257, 3, 63, "Section"],
-Cell[8745, 208, 9489, 205, 1138, "Input"],
+Cell[8745, 208, 5819, 118, 458, "Input"],
+Cell[14567, 328, 4193, 97, 638, "Input"],
 Cell[CellGroupData[{
-Cell[18259, 417, 177, 4, 37, "Input"],
-Cell[18439, 423, 195, 3, 36, "Output"]
+Cell[18785, 429, 898, 17, 58, "Input"],
+Cell[19686, 448, 217, 5, 21, "Print"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[18683, 432, 306, 4, 63, "Section"],
-Cell[18992, 438, 8729, 169, 598, "Input"],
-Cell[27724, 609, 5512, 117, 598, "Input"],
+Cell[19952, 459, 306, 4, 63, "Section"],
+Cell[20261, 465, 8729, 169, 598, "Input"],
+Cell[28993, 636, 5512, 117, 598, "Input"],
 Cell[CellGroupData[{
-Cell[33261, 730, 366, 9, 58, "Input"],
-Cell[33630, 741, 2507, 35, 21, "Print"]
+Cell[34530, 757, 366, 9, 52, "Input"],
+Cell[34899, 768, 2507, 35, 18, "Print"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
