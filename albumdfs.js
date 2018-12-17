@@ -21,5 +21,29 @@ function dfs(albums, photos) {
 	return ans
 }
 
-var ans = dfs([24, 52, 28], 204)
+function findAlbums(albums, photos, limit=2) {
+	let ans = []
+	let insert, leftover
+
+	ans = dfs(albums, photos)
+	for(let i = 1; ans.length == 0; i++) {
+		if(i <= limit) {
+			insert = dfs(albums, photos - i)
+		} else {
+			insert = []
+		}
+		leftover = dfs(albums, photos + i)
+
+		if(leftover.length <= insert.length && leftover.length > 0) {
+			return leftover
+		} else if(leftover.length > 0){
+			return leftover
+		} else if(insert.length > 0) {
+			return insert
+		}
+	}
+	return ans
+}
+
+var ans = findAlbums([24, 52, 28], 207)
 console.log(ans.reduce((sum, val) => sum + val, 0), ans)
